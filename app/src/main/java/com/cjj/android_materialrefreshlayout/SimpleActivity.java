@@ -16,6 +16,10 @@ import android.widget.Toast;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.cjj.android_materialrefreshlayout.footer.CustomFootItem;
+import com.cjj.android_materialrefreshlayout.footer.DefaultFootItem;
+import com.cjj.android_materialrefreshlayout.footer.OnLoadMoreListener;
+import com.cjj.android_materialrefreshlayout.footer.RecyclerViewWithFooter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,9 @@ import java.util.Random;
 public class SimpleActivity extends BaseActivity {
 
     private MaterialRefreshLayout materialRefreshLayout;
+    private RecyclerViewWithFooter rv;
+    private DefaultFootItem defaultFootItem;
+    private CustomFootItem customFootItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +49,6 @@ public class SimpleActivity extends BaseActivity {
                     @Override
                     public void run() {
                         materialRefreshLayout.finishRefresh();
-
                     }
                 }, 3000);
                 materialRefreshLayout.finishRefreshLoadMore();
@@ -56,7 +62,26 @@ public class SimpleActivity extends BaseActivity {
 
         });
 
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerview);
+        rv = (RecyclerViewWithFooter) findViewById(R.id.recyclerview);
+        defaultFootItem = new DefaultFootItem();
+        rv.setFootItem(defaultFootItem);//默认是这种
+//      customFootItem = new CustomFootItem();
+//        rv.setFootItem(new CustomFootItem());//自定义
+        rv.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                defaultFootItem.onBindData(rv, RecyclerViewWithFooter.STATE_LOADING);
+                rv.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+//                        defaultFootItem.onBindData(rv,RecyclerViewWithFooter.STATE_LOADING);
+                        defaultFootItem.onBindData(rv, RecyclerViewWithFooter.STATE_END);
+//                        defaultFootItem.onBindData(rv, RecyclerViewWithFooter.STATE_EMPTY);
+//                        defaultFootItem.onBindData(rv, RecyclerViewWithFooter.STATE_FINISH_LOADING);
+                    }
+                }, 2000);
+            }
+        });
         setupRecyclerView(rv);
     }
 

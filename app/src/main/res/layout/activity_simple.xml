@@ -25,15 +25,14 @@
     app:progress_size_type="normal"
     app:wave_height_type="normal"
     app:wave_show="false"
+    app:isLoadMore="false"
     >
 
-
-    <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.cjj.android_materialrefreshlayout.footer.RecyclerViewWithFooter
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent">
+    </com.cjj.android_materialrefreshlayout.footer.RecyclerViewWithFooter>
 
 
 </com.cjj.MaterialRefreshLayout>
