@@ -68,6 +68,8 @@ public class SimpleActivity extends BaseActivity {
         rv.setFootItem(defaultFootItem);//默认是这种
 //      customFootItem = new CustomFootItem();
 //        rv.setFootItem(new CustomFootItem());//自定义
+
+        //加载出现了两次，可以添加 private boolean ifLoading = false;来做判断是否正在加载中来不让同时两次加载
         rv.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
