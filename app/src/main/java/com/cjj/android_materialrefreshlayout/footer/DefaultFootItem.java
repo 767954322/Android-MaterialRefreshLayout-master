@@ -34,7 +34,7 @@ public class DefaultFootItem extends FootItem {
 
     @Override
     public void onBindData(View view, int state) {
-        if (state == RecyclerViewWithFooter.STATE_LOADING || state == RecyclerViewWithFooter.STATE_PULL_TO_LOAD) {
+        if (state == RecyclerViewWithFooter.STATE_LOADING ) {
             if (TextUtils.isEmpty(loadingText)) {
                 showProgressBar(view.getContext().getResources().getString(R.string.rv_with_footer_loading));
             } else {
@@ -44,7 +44,7 @@ public class DefaultFootItem extends FootItem {
             showEnd("暂无更多数据");
         } else if (state == RecyclerViewWithFooter.STATE_EMPTY) {
             showEnd("暂无数据");
-        } else if (state == RecyclerViewWithFooter.STATE_FINISH_LOADING) {
+        } else if (state == RecyclerViewWithFooter.STATE_FINISH_LOADING|| state == RecyclerViewWithFooter.STATE_PULL_TO_LOAD) {
             hideFooter();
         }
 //        else if (state == RecyclerViewWithFooter.STATE_PULL_TO_LOAD) {

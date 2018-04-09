@@ -99,8 +99,11 @@ public class SimpleActivity extends BaseActivity {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(SimpleActivity.this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(SimpleActivity.this));
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
