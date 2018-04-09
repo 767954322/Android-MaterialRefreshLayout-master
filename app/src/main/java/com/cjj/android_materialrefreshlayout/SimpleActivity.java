@@ -45,6 +45,7 @@ public class SimpleActivity extends BaseActivity {
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                //刷新最好延时0.5秒，不然箭头会出问题，时常不现实箭头
                 materialRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
